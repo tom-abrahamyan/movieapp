@@ -1,6 +1,9 @@
 import { useGetVideosByIdQuery } from "../../../api/moviesApi";
+import { useContext } from "react";
+import MovieContext from "./MovieDetailsContext";
 
-const Trailer = ({ id, type }) => {
+const Trailer = () => {
+  const { id, type } = useContext(MovieContext);
   const { data, isLoading, error } = useGetVideosByIdQuery({ type, id });
 
   if (isLoading) return <p className="text-white">Loading trailer...</p>;

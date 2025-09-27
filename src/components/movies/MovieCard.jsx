@@ -1,16 +1,16 @@
+import React from "react";
 import { useNavigate } from "react-router";
 
-const MovieCard = ({id, url, title, type}) => {
+const MovieCard = ({ id, url, title, type }) => {
   const navigate = useNavigate();
-
   
   const goToDetails = () => {
-     
-    navigate(`/moviedetails/${type}/${id}`)
-  } 
+    navigate(`/moviedetails/${type}/${id}`);
+  };
 
   return (
-    <div onClick={goToDetails}
+    <div
+      onClick={goToDetails}
       className="
       w-[150px] h-auto  
     text-white  
@@ -28,7 +28,11 @@ const MovieCard = ({id, url, title, type}) => {
       " style={{borderColor: "#022E34"}}>
         ⭐
       </div> */}
-      <img className="w-[100%] h-[100%] rounded-2xl " src={`https://image.tmdb.org/t/p/w200${url}`} alt={title} />
+      <img
+        className="w-[100%] h-[100%] rounded-2xl "
+        src={`https://image.tmdb.org/t/p/w200${url}`}
+        alt={title}
+      />
 
       <p className="w-[100%] h-[100%] bg-blue-950/50 absolute flex justify-center items-end opacity-0 hover:opacity-100 transition duration-150">
         {title}
@@ -37,4 +41,11 @@ const MovieCard = ({id, url, title, type}) => {
   );
 };
 
-export default MovieCard;
+export default React.memo(MovieCard, (prevProps, nextProps) => {
+  return (
+    prevProps.id === nextProps.id &&
+    prevProps.url === nextProps.url &&
+    prevProps.title === nextProps.title &&
+    prevProps.type === nextProps.type
+  );
+});

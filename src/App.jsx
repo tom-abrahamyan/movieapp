@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import MovieDetails from "./components/movies/movieDetails/MovieDetails";
 import Movies from "./pages/Movies";
+import About from "./pages/About";
 
 
 function App() {
@@ -13,10 +13,12 @@ function App() {
     {
       path: "/",
       element: <Layout />,
+   
       children: [
         { index: true, element: <Home /> },
         { path: "moviedetails/:type/:id", element: <MovieDetails />},
         { path: ":type", element: <Movies />},
+        { path: "about", element: <About />},
         { path: "favorites", element: <Favorites />}
       ],
     },

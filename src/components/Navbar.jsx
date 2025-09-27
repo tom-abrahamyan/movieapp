@@ -28,8 +28,11 @@ const Navbar = () => {
         <NavLink to="/" style={linkStyle}>
           Home
         </NavLink>
-        <NavLink to="favorites" style={linkStyle}>
-          Favorites
+        <NavLink to="movie" style={linkStyle}>
+          Movies
+        </NavLink>
+        <NavLink to="tv" style={linkStyle}>
+          Series
         </NavLink>
         <NavLink to="about" style={linkStyle}>
           About
@@ -50,11 +53,11 @@ const Navbar = () => {
         <NavLink to="/" style={linkStyle} onClick={() => setIsOpen(false)}>
           Home
         </NavLink>
-        <NavLink
-          to="favorites"
-          style={linkStyle}
-          onClick={() => setIsOpen(false)}>
-          Favorites
+        <NavLink to="movie" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Movies
+        </NavLink>
+        <NavLink to="tv" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Series
         </NavLink>
         <NavLink to="about" style={linkStyle} onClick={() => setIsOpen(false)}>
           About

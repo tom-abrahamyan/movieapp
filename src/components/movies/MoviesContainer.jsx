@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router";
-
+import { useMemo } from "react";
 import MovieCard from "./MovieCard";
 
 const MoviesContainer = ({ data, contentTitle = "Movies", type }) => {
   const navigate = useNavigate();
-
+  const topMovies = useMemo(() => data?.results?.slice(0, 5) || [], [data]);
   const goTo = () => {
     navigate(`/${type}`);
   };
+
   return (
     <div className="w-[90%] mt-10 flex flex-col items-center">
       <div className="w-[98%] flex justify-between items-center">
@@ -22,7 +23,7 @@ const MoviesContainer = ({ data, contentTitle = "Movies", type }) => {
         </button>
       </div>
       <div className="w-[100%] flex justify-around flex-wrap p-2  shadow-[0px_0px_13px_1px_rgba(0,233,255,1)] rounded-2xl">
-        {data.results.slice(0, 5).map((movie) => (
+        {topMovies.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

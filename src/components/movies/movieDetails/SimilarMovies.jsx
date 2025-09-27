@@ -1,12 +1,17 @@
 import { useGetSimilarByIdQuery } from "../../../api/moviesApi";
 import MovieCard from "../MovieCard.jsx";
+import { useContext, useMemo } from "react";
+import MovieContext from "./MovieDetailsContext";
 
-const SimilarMovies = ({ id, type }) => {
+const SimilarMovies = () => {
+  const { id, type } = useContext(MovieContext);
+
   const {
     data: similarMovies,
     isLoading: similarLoading,
     error: similarError,
-  } = useGetSimilarByIdQuery({type, id});
+  } = useGetSimilarByIdQuery({ type, id });
+  const topSimilar = useMemo(() => similarMovies?.results || [], [similarMovies]);
 
   if (similarLoading) return <p className="text-white">Loading movies...</p>;
   if (similarError)
@@ -14,9 +19,9 @@ const SimilarMovies = ({ id, type }) => {
 
   return (
     <div className="w-[100%] flex flex-col items-center mt-8">
-      <h1 className="text-3xl font-light" >Similar Movies</h1>
+      <h1 className="text-3xl font-light">Similar Movies</h1>
       <div className="w-[90%] h-auto flex flex-wrap justify-around mt-8">
-        {similarMovies.results.map((movie) => {
+        {topSimilar.map((movie) => {
           return (
             <MovieCard
               key={movie.id}

@@ -15,7 +15,7 @@ const Footer = () => {
         <FaYoutubeSquare />
         <FaSquareXTwitter />
       </div>
-      <div>Copyright © 2025 AbrahamyanStyle, L.L.C.</div>
+      <div>© 2025 MovieApp. All rights reserved.</div>
     </footer>
   )
 }

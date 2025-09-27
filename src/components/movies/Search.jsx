@@ -2,8 +2,9 @@ import { useState } from "react";
 import { tvGenres, movieGenres } from "../../api/genres";
 import moviesWorldImage from "../../assets/moviesWorldImage.jpg";
 
-const Search = ({ type, setGenreId,setMovieTitle }) => {
+const Search = ({ type, setGenreId, setMovieTitle }) => {
   const [term, setTerm] = useState("");
+ const [activeGenre, setActiveGenre] = useState(""); 
 
   let genres = [];
   if (type === "movie") {
@@ -11,14 +12,17 @@ const Search = ({ type, setGenreId,setMovieTitle }) => {
   } else {
     genres = tvGenres;
   }
- 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setMovieTitle(term)
-    setTerm("")
-  }
 
-   return (
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMovieTitle(term);
+    setTerm("");
+  };
+  const handleGenreClick = (id) => {
+    setGenreId(id);
+    setActiveGenre(id); 
+  };
+  return (
     <div
       className="relative w-[90%]  min-h-[350px] rounded-2xl  mt-11 bg-cover  bg-bottom flex flex-col items-center justify-center"
       style={{ backgroundImage: `url(${moviesWorldImage})` }}>
@@ -37,15 +41,19 @@ const Search = ({ type, setGenreId,setMovieTitle }) => {
       </form>
       <div className=" z-10  w-[80%] mt-12 flex flex-wrap justify-center gap-3">
         <span
-          className="bg-blue-600/70 px-3 py-1 rounded-full text-xs md:text-sm cursor-pointer"
-          onClick={() => setGenreId("")}>
+          className={`px-3 py-1 rounded-full text-xs md:text-sm cursor-pointer ${
+            activeGenre === "" ? "bg-orange-500" : "bg-blue-600/70"
+          }`}
+          onClick={() => handleGenreClick("")}>
           All
         </span>
         {genres.map((genre) => (
           <span
             key={genre.id}
-            className="bg-blue-600/70 px-3 py-1 rounded-full text-xs md:text-sm cursor-pointer"
-            onClick={() => setGenreId(genre.id)}>
+            className={`px-3 py-1 rounded-full text-xs md:text-sm cursor-pointer ${
+              activeGenre === genre.id ? "bg-orange-500" : "bg-blue-600/70"
+            }`}
+            onClick={() => handleGenreClick(genre.id)}>
             {genre.name}
           </span>
         ))}

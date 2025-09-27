@@ -1,7 +1,10 @@
 import { useGetCreditsByIdQuery } from "../../../api/moviesApi";
+import { useContext } from "react";
+import MovieContext from "./MovieDetailsContext";
 
-const Actors = ({ id , type }) => {
-  const { data, isLoading, error } = useGetCreditsByIdQuery({type, id});
+const Actors = () => {
+  const { id, type } = useContext(MovieContext);
+  const { data, isLoading, error } = useGetCreditsByIdQuery({ type, id });
 
   if (isLoading) return <p className="text-white">Loading actors...</p>;
   if (error) return <p className="text-red-500">Error fetching actors 😥</p>;
@@ -15,7 +18,7 @@ const Actors = ({ id , type }) => {
             key={`${actor.id}-${index}`}
             className="min-w-[120px] flex flex-col items-center">
             <img
-             src={
+              src={
                 actor.profile_path
                   ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
                   : "https://placehold.co/200x300?text=No+Image"
