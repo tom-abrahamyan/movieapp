@@ -19,7 +19,7 @@ export default function Carousel({ data }) {
   };
 
   return (
-    <div className="w-[88%] h-[550px] mx-auto ">
+    <div className="w-[88%] h-[300px] sm:h-[380px] md:h-[550px] mx-auto  ">
       <Swiper
         navigation
         pagination={{ clickable: true }}
@@ -27,7 +27,7 @@ export default function Carousel({ data }) {
         loop={true}
         className="h-[100%] rounded-lg overflow-hidden">
         {data.map((movie) => (
-          <SwiperSlide key={movie.id} className="relative">
+          <SwiperSlide key={movie.id} className="relative  sm:h-[310px]">
             <img
               src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
               className="w-full h-full object-cover"

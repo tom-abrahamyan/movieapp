@@ -12,7 +12,8 @@ const MovieCard = ({ id, url, title, type }) => {
     <div
       onClick={goToDetails}
       className="
-      w-[150px] h-auto  
+      w-[100px] h-[auto]
+      sm:w-[150px] sm:h-[225px]  
     text-white  
       font-extrabold 
       uppercase 
@@ -34,7 +35,7 @@ const MovieCard = ({ id, url, title, type }) => {
         alt={title}
       />
 
-      <p className="w-[100%] h-[100%] bg-blue-950/50 absolute flex justify-center items-end opacity-0 hover:opacity-100 transition duration-150">
+      <p className="text-[12px] sm:text-[16px] md:text-[20px] w-[100%] h-[100%] bg-blue-950/50 absolute flex justify-center items-end opacity-0 hover:opacity-100 transition duration-150">
         {title}
       </p>
     </div>

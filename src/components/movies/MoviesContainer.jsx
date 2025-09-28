@@ -13,7 +13,7 @@ const MoviesContainer = ({ data, contentTitle = "Movies", type }) => {
     <div className="w-[90%] mt-10 flex flex-col items-center">
       <div className="w-[98%] flex justify-between items-center">
         <h2
-          className="w-[150px] font-bold 
+          className="w-[150px] font-bold  text-[12px] md:text-[16px]
     text-center p-2.5  rounded-t-full bg-cyan-400 shadow-[0px_0px_13px_1px_rgba(0,233,255,1)]">
           {contentTitle}
         </h2>

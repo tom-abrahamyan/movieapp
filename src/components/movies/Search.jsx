@@ -31,13 +31,13 @@ const Search = ({ type, setGenreId, setMovieTitle }) => {
         onSubmit={handleSubmit}
         className="z-10 flex  flex-wrap justify-center items-center">
         <input
-          className="sm:w-[100%] md:w-[250px] p-3"
+          className="w-[100%] md:w-[250px] p-3"
           type="text"
           placeholder="Search movies..."
           value={term}
           onChange={(e) => setTerm(e.target.value)}
         />
-        <button className="bg-blue-600/70 p-4 rounded">search</button>
+        <button className=" bg-blue-600/70 p-2 sm:p-4 rounded">search</button>
       </form>
       <div className=" z-10  w-[80%] mt-12 flex flex-wrap justify-center gap-3">
         <span
